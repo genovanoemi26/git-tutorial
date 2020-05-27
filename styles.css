@@ -1,0 +1,139 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root{
+    --clr-icons: #929292 ;
+    --clr-text:  #ffffff ;
+    --clr-bg-dark:  #242424 ;
+    --clr-bg-light:  #504d4d  ;
+    --clr-accent: #f59b84 ;
+}
+
+body{
+    margin: 1m;
+    background-color: var(--clr-bg-dark);
+    color: var(--clr-text);
+    line-height: 1.5;
+    font-family: sans-serif;
+
+}
+
+img{
+    max-width: 100%;
+}
+
+.btn{
+    cursor: pointer;
+    border: 0;
+    background: transparent;
+    color: var(--clr-text);
+    font-size: 1.125rem;
+    padding: 0.5em;
+    display: inline-block;
+    position: relative;
+
+}
+
+.btn::after{
+    content: '';
+    position: absolute;
+    background-color: var(--clr-accent);
+    height: .85em;
+    width: 75%;
+    left:0;
+    top: 50%;
+    z-index: -1;
+    transition: transform 175ms cubic-bezier(.71,-0.05,.49,1.37);
+    transform-origin: bottom left;
+}
+
+.btn:hover::after, 
+.btn:focus::after{
+    transform: scale(1.35, 1.85);
+}
+
+.title{
+    color: var(--clr-accent);
+    text-transform: uppercase;
+    margin: 0;
+    font-size: clamp(3rem, 10vw, 7rem);
+}
+
+.location{
+    color: var(--clr-icons);
+    margin: 0;
+    font-size: 1.5rem;
+    margin-bottom: 1.5em;
+
+}
+
+header{
+    display: flex;
+    align-items: center;
+    margin:2em 0;
+
+}
+
+
+
+.nav{
+    /* outline: 2px solid red; to check yung sa grid ng nav bar*/
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav_link{
+   color: var(--clr-text);
+   text-transform: capitalize;
+   text-decoration: none;
+
+}
+
+.nav_link:hover,
+.nav_link:focus{
+    color: var(--clr-accent);
+
+}
+
+
+.secondary-images{
+    display: flex;
+    gap:0.5em;
+
+}
+
+footer{
+    margin-top: 2em;
+}
+
+.social-link:hover,
+.social-link:focus{
+
+    opacity: 0.5;
+}
+
+@media(min-width: 800px){
+    body{
+        margin: 0;
+    }
+
+    .main-grid{
+        display: grid;
+        grid-template-columns: 
+            minmax(1em, 1fr)
+            repeat(3, minmax(10rem, 30rem))
+            minmax(1em, 1fr);
+        gap:2em; 
+
+    }
+    header{
+        grid-column: 2 /5;
+    }
+    main{
+        grid-column: 2 / -1;
+    }
+}
